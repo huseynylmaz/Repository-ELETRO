@@ -1,0 +1,828 @@
+  <!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop Page | Electro</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <style>
+  
+
+    /* Pagination */
+    .pagination .page-link {
+      color: #333;
+      border-radius: 8px;
+      margin: 0 3px;
+    }
+
+    .pagination .page-item.active .page-link {
+      background-color: #ffc107;
+      border-color: #ffc107;
+      color: #fff;
+    }
+
+    .pagination .page-link:hover {
+      background-color: #928f83;
+      color: white;
+    }
+
+
+
+
+
+
+
+   
+    body {
+ 
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .filter-sidebar {
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      transition: 0.5s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .product-img img {
+      width: 100%;
+      height: auto;
+    }
+
+    .product-info {
+      padding: 10px;
+    }
+
+    .price {
+      
+      font-weight: 600;
+    }
+
+    .promo-banner {
+      position: relative;
+      text-align: center;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .promo-banner img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .promo-banner .banner-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .promo-banner h5 {
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    .promo-banner p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .promo-banner .btn {
+      background-color: orange;
+      padding: 6px 20px;
+      border-radius: 25px;
+    }
+
+    .badge {
+      font-size: 14px;
+      padding: 6px 10px;
+      border-radius: 10px;
+    }
+
+    .header {
+      background-color: #212529;
+      text-align: center;
+      padding: 15px 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+  
+  </style>
+</head>
+<body>
+<div class="py-1 border-bottom" style="background-color:#f8f9fa;">
+    <div class="container d-flex justify-content-between">
+      <div class="small text-muted">
+        <i class="bi bi-telephone me-1"></i> Call Us: (+01) 1234 567890
+      </div>
+      <div class="small text-muted">
+        USD |
+        <select class="form-select form-select-sm d-inline-block w-auto border-0 bg-transparent" style="color:#6c757d;">
+          <option selected>English</option>
+          <option>Arabic</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== شريط الشعار والبحث ===== -->
+  <div class="bg-white py-3 border-bottom">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between">
+      <!-- شعار -->
+      <a href="#home" class="text-decoration-none d-flex align-items-center">
+        <span class="badge bg-warning text-dark me-2" style="font-size:1.1rem; padding: .5rem .6rem;">
+          <i class="bi bi-bag-fill"></i>
+        </span>
+        <span class="h4 mb-0 fw-bold text-dark">Electro</span>
+      </a>
+
+      <!-- شريط البحث -->
+      <form class="d-flex flex-fill mx-4" style="max-width:700px;">
+        <input class="form-control rounded-start-pill" type="search" placeholder="Search Looking For?" aria-label="Search">
+        <button class="btn rounded-end-pill text-white" type="submit" style="background-color:#f4a100;">
+          <i class="bi bi-search"></i>
+        </button>
+      </form>
+
+      <!-- أيقونات -->
+      <div class="d-flex align-items-center">
+        <a href="#" class="me-3 text-dark"><i class="bi bi-heart fs-5"></i></a>
+        <a href="#" class="me-3 text-dark"><i class="bi bi-person fs-5"></i></a>
+        <a href="#" class="position-relative text-dark">
+          <i class="bi bi-cart fs-4"></i>
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">0</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== النافبار الرئيسي ===== -->
+   <nav class="navbar navbar-expand-lg sticky-top shadow-sm" style="background-color:#f4a100;">
+    <div class="container">
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <i class="bi bi-list fs-3 text-white"></i>
+      </button>
+
+      <!-- زر الفئات -->
+      <a href="#" class="text-white fw-semibold me-3 text-decoration-none">
+        <i class="bi bi-list"></i> All Categories
+      </a>
+
+      <!-- القوائم -->
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link text-white fw-semibold active" href="./index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white fw-semibold" href="./SHOP.HTML">Shop</a></li>
+          <li class="nav-item"><a class="nav-link text-white fw-semibold" href="./singlepage.html">Single Page</a></li>
+
+         
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white fw-semibold" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown">
+              Pages
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="./bestseller.html">Bestseller</a></li>
+              <li><a class="dropdown-item" href="./cartPage.html">Cart Page</a></li>
+              <li><a class="dropdown-item" href="./cheackout.html">Checkout</a></li>
+              <li><a class="dropdown-item" href="./404page.html">404 Page</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link text-white fw-semibold" href="./contact.html">Contact</a></li>
+
+          <!-- رقم الهاتف وزر الاتصال -->
+          <li class="nav-item ms-lg-3">
+            <a href="#" class="btn text-white fw-semibold" style="background-color:#e60000;">
+              <i class="bi bi-telephone-fill me-1"></i> +0123 456 7890
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+ <div
+      class="text-center text-white py-5"
+      style="
+        background: url('./igmes/1.jfif')
+          center/cover no-repeat;
+      "
+    >
+      <div class="container py-5">
+        <h2 class="fw-bold">shop</h2>
+        <p>Home / Pages / shop</p>
+      </div>
+    </div>
+
+
+<!-- SALE Banner Section -->
+
+
+
+
+
+ 
+
+
+ 
+
+
+
+
+
+
+
+  
+<div class="container-fluid">
+    <div class="row g-4 text-center">
+
+     
+      <div class="col-6 col-md-2">
+        <div class="bg-white shadow-sm rounded py-4 px-2 h-100">
+          <i class="bi bi-arrow-repeat fs-2 text-danger"></i>
+          <h6 class="fw-bold text-dark">FREE SHIPPING</h6>
+          <small class="text-secondary">Free shipping on all order</small>
+        </div>
+      </div>
+ 
+      <div class="col-6 col-md-2">
+        <div class="bg-white shadow-sm rounded py-4 px-2 h-100">
+          <i class="bi bi-send-fill fs-2 text-danger mb-2"></i>
+          <h6 class="fw-bold text-dark">SECURE PAYMENT</h6>
+          <small class="text-secondary">We value your security</small>
+        </div>
+      </div>
+
+      
+      <div class="col-6 col-md-2">
+        <div class="bg-white shadow-sm rounded py-4 px-2 h-100">
+          <i class="bi bi-life-preserver fs-2 text-danger mb-2"></i>
+          <h6 class="fw-bold text-dark">RECEIVE GIFT CARD</h6>
+          <small class="text-secondary">Redeem all over your order $50</small>
+        </div>
+      </div>
+
+      
+      <div class="col-6 col-md-2">
+        <div class="bg-white shadow-sm rounded py-4 px-2 h-100">
+          <i class="bi bi-credit-card fs-2 text-danger mb-2"></i>
+          <h6 class="fw-bold text-dark">FREE RETURN</h6>
+          <small class="text-secondary">Free return products in 30 days</small>
+        </div>
+      </div>
+
+     
+      <div class="col-6 col-md-2">
+        <div class="bg-white shadow-sm rounded py-4 px-2 h-100">
+          <i class="bi bi-lock fs-2 text-danger mb-2"></i>
+          <h6 class="fw-bold text-dark">SUPPORT 24/7</h6>
+          <small class="text-secondary">We support online 24 hrs a day</small>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <div class="bg-white shadow-sm rounded py-4 px-2 h-100">
+          <i class="bi bi-rss fs-1 text-danger mb-2"></i>
+          <h6 class="fw-bold text-dark">SUPPORT 24/7</h6>
+          <small class="text-secondary">We support online 24 hrs a day</small>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+
+ <div class="container py-5">
+    <div class="row g-4">
+
+      
+      <div class="col-12 col-md-6">
+        <div class="d-flex align-items-center justify-content-between bg-white shadow-sm rounded p-4">
+          <div class="text-end">
+            <small class="text-secondary d-block mb-1 fs-6">Find The Best Camera for You!</small>
+            <h2 class="text-danger fw-bold mb-0">40% Off</h2>
+            <h4 class="text-warning fw-semibold mb-0">Smart Camera</h4>
+          </div>
+          <img src="./igmes/product-2.png" alt="Camera" class="img-fluid" style="width:130px; height:auto;">
+        </div>
+      </div>
+ 
+      <div class="col-12 col-md-6">
+        <div class="d-flex align-items-center justify-content-between bg-white shadow-sm rounded p-4">
+          <div class="text-end">
+            <small class="text-secondary d-block mb-1 fs-6">Find The Best Watches for You!</small>
+            <h2 class="text-danger fw-bold mb-0">20% Off</h2>
+            <h4 class="text-warning fw-semibold mb-0">Smart Watch</h4>
+          </div>
+          <img src="./igmes/product-2 (1).png" alt="Watch" class="img-fluid" style="width:110px; height:auto;">
+        </div>
+      </div>
+
+      
+    </div>
+  </div>
+
+
+  <section class="container my-5">
+  <div class="position-relative rounded-4 overflow-hidden shadow-sm">
+    <img src="./igmes/product-banner-3.jpg" 
+         class="w-100 rounded-4" 
+         alt="Drone Sale Banner"
+         style="height: 300px; object-fit: cover;">
+    <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+      <h4 class="fw-bold text-warning">SALE</h4>
+      <h2 class="fw-bold">Get UP To 50% Off</h2>
+      <a href="#" class="btn btn-warning rounded-pill text-white mt-2 px-4 py-2">Shop Now</a>
+    </div>
+  </div>
+</section>
+
+ 
+<div class="container mb-4">
+  <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+    <div class="flex-grow-1 me-3">
+      <input type="text" class="form-control" placeholder="keywords">
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+      <span>Sort By:</span>
+      <select class="form-select form-select-sm" style="width: 150px;">
+        <option selected>Default Sorting</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Newest</option>
+      </select>
+
+      <div class="d-flex align-items-center ms-3">
+        <button class="btn btn-outline-warning me-2">
+          <i class="bi bi-grid-3x3-gap"></i>
+        </button>
+        <button class="btn btn-outline-warning">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+   
+  <!-- Shop Section -->
+  <div class="container my-5">
+    <div class="row">
+      
+      <!-- Filter Sidebar -->
+      <aside class="col-lg-3 mb-4">
+        <div class="filter-sidebar">
+          <h5 class="filter-title">Products Categories</h5>
+          <label><i class="bi bi-apple text-danger"></i> Accessories</label><br>
+          <label><i class="bi bi-apple text-danger"></i> Electronics & Computer</label><br>
+          <label><i class="bi bi-apple text-danger"></i> Laptops & Desktops</label><br>
+          <label><i class="bi bi-apple text-danger"></i> Mobiles & Tablets</label><br>
+          <label><i class="bi bi-apple text-danger"></i> SmartPhone & Smart TV</label>
+
+          <h5 class="filter-title mt-4">Price</h5>
+          <input type="range" class="form-range" min="0" max="5000">
+
+          <h5 class="filter-title mt-4">Select By Color</h5>
+          <label><i class="bi bi-apple text-danger"></i> Gold (1)</label><br>
+          <label><i class="bi bi-apple text-danger"></i> Green (1)</label><br>
+          <label><i class="bi bi-apple text-danger"></i> White (1)</label>
+
+          <h5 class="filter-title mt-4">Additional Products</h5>
+          <label><input type="checkbox"> Accessories</label><br>
+          <label><input type="checkbox"> Electronics & Computer</label><br>
+          <label><input type="checkbox"> Laptops & Desktops</label><br>
+          <label><input type="checkbox"> SmartPhone & Smart TV</label>
+
+          <h5 class="mt-4">Featured Products</h5>
+          <!-- Featured Product Cards -->
+          <div class="d-flex align-items-center border rounded p-3 mb-3">
+            <div class="rounded me-3" style="width: 80px; height: 80px;">
+              <img src="./igmes/product-3.png" class="img-fluid rounded" alt="Image">
+            </div>
+            <div>
+              <h6 class="mb-2">SmartPhone</h6>
+              <div class="d-flex mb-1">
+                <i class="fa fa-star text-danger"></i><i class="fa fa-star text-danger"></i>
+                <i class="fa fa-star text-danger"></i><i class="fa fa-star text-danger"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <div class="d-flex">
+                <h6 class="fw-bold me-2 mb-0">$2.99</h6>
+                <h6 class="text-danger text-decoration-line-through mb-0">$4.11</h6>
+              </div>
+            </div>
+          </div>
+            <div class="d-flex align-items-center border rounded p-3 mb-3">
+            <div class="rounded me-3" style="width: 80px; height: 80px;">
+              <img src="./igmes/product-5.png" class="img-fluid rounded" alt="Image">
+            </div>
+            <div>
+              <h6 class="mb-2">SmartPhone</h6>
+              <div class="d-flex mb-1">
+                <i class="fa fa-star text-danger"></i><i class="fa fa-star text-danger"></i>
+                <i class="fa fa-star text-danger"></i><i class="fa fa-star text-danger"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <div class="d-flex">
+                <h6 class="fw-bold me-2 mb-0">$2.99</h6>
+                <h6 class="text-danger text-decoration-line-through mb-0">$4.11</h6>
+              </div>
+            </div>
+          </div>
+            <div class="d-flex align-items-center border rounded p-3 mb-3">
+            <div class="rounded me-3" style="width: 80px; height: 80px;">
+              <img src="./igmes/product-2.png" class="img-fluid rounded" alt="Image">
+            </div>
+            <div>
+              <h6 class="mb-2">SmartPhone</h6>
+              <div class="d-flex mb-1">
+                <i class="fa fa-star text-danger"></i><i class="fa fa-star text-danger"></i>
+                <i class="fa fa-star text-danger"></i><i class="fa fa-star text-danger"></i>
+                <i class="fa fa-star"></i>
+              </div>
+              <div class="d-flex">
+                <h6 class="fw-bold me-2 mb-0">$2.99</h6>
+                <h6 class="text-danger text-decoration-line-through mb-0">$4.11</h6>
+              </div>
+            </div>
+          </div>
+
+          <a href="#!" class="btn btn-warning px-4 py-2 rounded-pill w-100 text-light">View More</a>
+
+          <!-- SALE Banner -->
+          <div class="promo-banner mt-4">
+            <img src="./igmes/product-8.png" alt="Sale Banner">
+            <div class="banner-text">
+              <h5>SALE</h5>
+              <h2 class="text-warning">Get UP TO 50% Off</h2>
+              <button class="btn text-white">Shop Now</button>
+            </div>
+          </div>
+
+ 
+          <div class="card border-0 shadow-sm mt-4">
+            <div class="card-body">
+              <h6 class="fw-bold mb-3">PRODUCT TAGS</h6>
+              <div class="d-flex flex-wrap gap-2">
+                <a href="#" class="badge bg-warning text-white border">New</a>
+                <a href="#" class="badge bg-warning text-white border">Brand</a>
+                <a href="#" class="badge bg-warning text-white border">Black</a>
+               
+                <a href="#" class="badge bg-warning text-white border">White</a>
+                <a href="#" class="badge bg-warning text-white border">Tablets</a>
+                <a href="#" class="badge bg-warning text-white border">Phone</a>
+                <a href="#" class="badge bg-warning text-white border">Camera</a>
+                <a href="#" class="badge bg-warning text-white border">Drone</a>
+                <a href="#" class="badge bg-warning text-white border">Television</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Products Section -->
+      <div class="col-lg-9">
+        <div class="row g-4">
+
+          <!-- 9 Product Cards -->
+          <div class="col-md-4" >
+            <div class="product-card">
+              <div class="product-img">
+                <img src="./igmes/product-3.png" alt="Product">
+              </div>
+              <div class="product-info">
+                <p>Wireless Earbuds</p>
+                <h6>AirPods Pro</h6>
+                <div class="price text-danger">$199</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="product-card">
+              <div class="product-img">
+                <img src="./igmes/product-4.png" alt="Product">
+              </div>
+              <div class="product-info">
+                <p>Wireless Earbuds</p><h6>AirPods Pro</h6><div class="price text-danger">$199</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="product-card">
+              <div class="product-img">
+                <img src="./igmes/product-5.png" alt="Product">
+              </div>
+              <div class="product-info">
+                <p>Wireless Earbuds</p><h6>AirPods Pro</h6><div class="price text-danger">$199</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="product-card">
+              <div class="product-img">
+                <img src="./igmes/product-6.png" alt="Product">
+              </div>
+              <div class="product-info">
+                <p>Wireless Earbuds</p><h6>AirPods Pro</h6><div class="price text-danger">$199</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="product-card">
+              <div class="product-img">
+                <img src="./igmes/product-7.png" alt="Product">
+              </div>
+              <div class="product-info">
+                <p>Wireless Earbuds</p><h6>AirPods Pro</h6><div class="price text-danger">$199</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="product-card">
+              <div class="product-img">
+                <img src="./igmes/product-8.png" alt="Product">
+              </div>
+              <div class="product-info">
+                <p>Wireless Earbuds</p><h6>AirPods Pro</h6><div class="price text-danger">$199</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="product-card">
+              <div class="product-img">
+                <img src="./igmes/product-9.png" alt="Product">
+              </div>
+              <div class="product-info">
+                <p>Wireless Earbuds</p><h6>AirPods Pro</h6><div class="price text-danger">$199</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="product-card">
+              <div class="product-img">
+                <img src="./igmes/product-10.png" alt="Product">
+              </div>
+              <div class="product-info">
+                <p>Smartphone</p><h6>iPhone 15 Pro</h6><div class="price text-danger">$1099</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="product-card">
+              <div class="product-img">
+                <img src="./igmes/product-11.png" alt="Product">
+              </div>
+              <div class="product-info">
+                <p>Laptop</p><h6>Lenovo Legion</h6><div class="price  text-danger">$1299</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+        
+        <!-- Pagination -->
+        <nav aria-label="Page navigation" class="mt-5">
+          <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link bg-warning" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link bg-warning" href="#">1</a></li>
+            <li class="page-item"><a class="page-link bg-warning" href="#">2</a></li>
+            <li class="page-item"><a class="page-link bg-warning" href="#">3</a></li>
+            <li class="page-item"><a class="page-link bg-warning" href="#">4</a></li>
+            <li class="page-item"><a class="page-link bg-warning" href="#">5</a></li>
+            <li class="page-item"><a class="page-link bg-warning" href="#">6</a></li>
+            <li class="page-item"><a class="page-link bg-warning" href="#">Next</a></li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+   
+
+    <div class="container-fluid py-5">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div
+            class="position-relative rounded-4 overflow-hidden"
+            style="background-color: #ebe6e4; height: 280px"
+          >
+            <img
+              src="./igmes/product-banner.jpg"
+              alt="Headphones"
+              class="position-absolute top-50 start-50 translate-middle img-fluid"
+              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.3"
+            />
+            <div
+              class="position-absolute top-50 start-50 translate-middle text-center"
+              style="z-index: 2"
+            >
+              <h3 class="fw-bold text-danger mb-2">EOS Rebel</h3>
+              <p class="fs-5 text-warning mb-3">T7i Kit</p>
+              <a href="#" class="btn btn-warning text-white px-4 py-2"
+                >Shop Now</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div
+            class="position-relative rounded-4 overflow-hidden"
+            style="background-color: #ae6c54; height: 280px"
+          >
+            <img
+              src="./igmes/product-banner-2.jpg"
+              alt="Headphones"
+              class="position-absolute top-50 start-50 translate-middle img-fluid"
+              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.3"
+            />
+            <div
+              class="position-absolute top-50 start-50 translate-middle text-center"
+              style="z-index: 2"
+            >
+              <h3 class="fw-bold mb-2">SALE</h3>
+              <p class="fs-5 text-white mb-3">Get UP To 50% Off</p>
+              <a href="#" class="btn btn-danger text-white px-4 py-2"
+                >Shop Now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<section> 
+     <section class="bg-dark text-light mt-5"> 
+     <footer class="pt-5">
+      <div class="container pb-4 border-bottom border-secondary">
+        <div class="row text-center text-md-start">
+           
+          <div class="col-md-3 mb-4">
+            <div class="mb-3">
+              <div class="bg-danger rounded-circle p-3 d-inline-block">
+                <i class="bi bi-geo-alt-fill fs-4 text-white"></i>
+              </div>
+            </div>
+            <h6 class="fw-bold">Address</h6>
+            <p class="small mb-0">123 Street New York, USA</p>
+          </div>
+
+          
+          <div class="col-md-3 mb-4">
+            <div class="mb-3">
+              <div class="bg-danger rounded-circle p-3 d-inline-block">
+                <i class="bi bi-envelope-fill fs-4 text-white"></i>
+              </div>
+            </div>
+            <h6 class="fw-bold">Mail Us</h6>
+            <p class="small mb-0">info@example.com</p>
+          </div>
+
+        
+          <div class="col-md-3 mb-4">
+            <div class="mb-3">
+              <div class="bg-danger rounded-circle p-3 d-inline-block">
+                <i class="bi bi-telephone-fill fs-4 text-white"></i>
+              </div>
+            </div>
+            <h6 class="fw-bold">Telephone</h6>
+            <p class="small mb-0">(+012) 3456 7890</p>
+          </div>
+ 
+          <div class="col-md-3 mb-4">
+            <div class="mb-3">
+              <div class="bg-danger rounded-circle p-3 d-inline-block">
+                <i class="bi bi-globe fs-4 text-white"></i>
+              </div>
+            </div>
+            <h6 class="fw-bold">Yoursite@ex.com</h6>
+            <p class="small mb-0">(+012) 3456 7890</p>
+          </div>
+        </div>
+      </div>
+
+     
+       <div class="container py-5">
+        <div class="row gy-4">
+        
+          <div class="col-md-3">
+            <h6 class="fw-bold text-warning">Newsletter</h6>
+            <p class="small">
+              Dolor amet sit justo amet elitr clita ipsum elitr est.
+            </p>
+            <form class="d-flex">
+              <input
+                type="email"
+                class="form-control form-control-sm me-2"
+                placeholder="Enter your email"
+              />
+              <button class="btn btn-warning btn-sm text-dark fw-semibold">
+                SignUp
+              </button>
+            </form>
+          </div>
+ 
+          <div class="col-md-3">
+            <h6 class="fw-bold text-warning">Customer Service</h6>
+            <ul class="list-unstyled small">
+              <li><a href="#" class="text-light text-decoration-none">Contact Us</a></li>
+              <li><a href="#" class="text-light text-decoration-none">Returns</a></li>
+              <li><a href="#" class="text-light text-decoration-none">Order History</a></li>
+              <li><a href="#" class="text-light text-decoration-none">Site Map</a></li>
+              <li><a href="#" class="text-light text-decoration-none">My Account</a></li>
+              <li><a href="#" class="text-light text-decoration-none">Unsubscribe</a></li>
+            </ul>
+          </div>
+
+          
+          <div class="col-md-3">
+            <h6 class="fw-bold text-warning">Information</h6>
+            <ul class="list-unstyled small">
+              <li><a href="#" class="text-light text-decoration-none">About Us</a></li>
+              <li><a href="#" class="text-light text-decoration-none">Delivery Info</a></li>
+              <li><a href="#" class="text-light text-decoration-none">Privacy Policy</a></li>
+              <li><a href="#" class="text-light text-decoration-none">Terms & Conditions</a></li>
+              <li><a href="#" class="text-light text-decoration-none">Warranty</a></li>
+              <li><a href="#" class="text-light text-decoration-none">FAQ</a></li>
+            </ul>
+          </div>
+ 
+          <div class="col-md-3">
+            <h6 class="fw-bold text-warning">Extras</h6>
+            <ul class="list-unstyled small">
+              <li><a href="#" class="text-light text-decoration-none">Brands</a></li>
+              <li><a href="#" class="text-light text-decoration-none">Gift Vouchers</a></li>
+              <li><a href="#" class="text-light text-decoration-none">Affiliates</a></li>
+              <li><a href="#" class="text-light text-decoration-none">Wishlist</a></li>
+              <li><a href="#" class="text-light text-decoration-none">Track Your Order</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <div class="bg-danger text-dark py-2">
+        <div class="container d-flex flex-column flex-md-row justify-content-between small">
+          <span>© Your Site Name, All rights reserved.</span>
+          <span>Designed By <strong>HTML Codex</strong>. Distributed By <strong>ThemeWagon</strong></span>
+        </div>
+      </div>
+    </footer> 
+
+
+
+
+   
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
